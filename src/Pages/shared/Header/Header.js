@@ -21,7 +21,6 @@ export const Header = () => {
               className="inline-flex items-center mr-8"
             >
               <TbRainbow className='logo text-xl'></TbRainbow>
-              
               <span className="ml-2 company text-xl font-bold tracking-wide text-gray-100 uppercase">
               Rainbow Academy
               </span>
@@ -116,7 +115,7 @@ export const Header = () => {
                         className="inline-flex items-center"
                       >
                         
-                        
+                        <TbRainbow className='logo text-xl'></TbRainbow>
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         Rainbow Academy
                         </span>
