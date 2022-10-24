@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Great+Vibes&family=Kanit:wght@300&family=Lobster&display=swap');
+.logo {
+    font-family: 'Bungee Spice', cursive;
+    background-image: -webkit-linear-gradient(orange, red, rgb(248, 174, 38));
+  }
+.company{
+    font-size: 22px;
+    background: -webkit-linear-gradient(rgb(32, 194, 86), rgb(245, 229, 5));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}

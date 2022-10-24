@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
+import './Header.css'
+import { TbRainbow } from "react-icons/tb";
 
 
 
@@ -18,11 +20,10 @@ export const Header = () => {
               title="Company"
               className="inline-flex items-center mr-8"
             >
+              <TbRainbow className='logo text-xl'></TbRainbow>
               
-              
-
-              <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                Easy Quizzes
+              <span className="ml-2 company text-xl font-bold tracking-wide text-gray-100 uppercase">
+              Rainbow Academy
               </span>
             </Link>
             <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -117,7 +118,7 @@ export const Header = () => {
                         
                         
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        EASY QUIZZES
+                        Rainbow Academy
                         </span>
                       </Link>
                     </div>
