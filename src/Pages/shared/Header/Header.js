@@ -12,9 +12,9 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { user, logOut } = useContext(AuthContext);
-  
+  console.log(user.displayName);
   // handle log out 
-  
+
   const handleLogOut = () => {
     logOut()
     .then(toast.error('User logged out!'))
@@ -88,7 +88,7 @@ export const Header = () => {
               user?.uid ? 
               <>
                 <li><button onClick={handleLogOut} className='text-gray-100'>Log out</button></li>
-                <p> {user.displayName} </p>
+                <p className='text-gray-100'> {user.displayName} </p>
               </>
                 :
                 <li>
@@ -109,7 +109,7 @@ export const Header = () => {
 
             <li>
               <Link
-                to="/"
+                to="/signup"
                 className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-500 hover:bg-sky-700 focus:shadow-outline focus:outline-none"
                 aria-label="Sign up"
                 title="Sign up"
@@ -218,7 +218,7 @@ export const Header = () => {
 
                       <li>
                         <Link
-                          to="/"
+                          to="/signup"
                           className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-500 hover:bg-sky-600 focus:shadow-outline focus:outline-none"
                           aria-label="Sign up"
                           title="Sign up"

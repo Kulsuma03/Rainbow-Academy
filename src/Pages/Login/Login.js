@@ -5,8 +5,8 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Login = () => {
     const { signInWithGoogle, } = useContext(AuthContext);
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (event) => {
+    event.preventDefault()
 
 
 
@@ -29,8 +29,8 @@ const Login = () => {
         <div className='w-full  mx-auto'>
             <div className=" w-80 mt-14 md:w-full mx-auto max-w-md p-21 mt-5 rounded-md shadow sm:p-8 bg-gray-100 ">
                 <h2 className="mb-3 text-3xl font-semibold text-center">Login to your account</h2>
-                <p className="text-sm text-center text-gray-400 text-orange-500">Don't have account?
-                    <Link className="focus:underline hover:underline">Sign up here</Link>
+                <p className="text-sm text-center text-sky-500">Don't have account?
+                    <Link to="/signup" className="focus:underline hover:underline">Sign up here</Link>
                 </p>
                 <div className='md:flex'>
 
@@ -58,20 +58,23 @@ const Login = () => {
                         <div className="space-y-4">
                             <div className="space-y-2">
                                 <label htmlFor="email" className="block text-sm">Email address</label>
-                                <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                                <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-300 text-gray-100 focus:border-violet-400" />
                             </div>
                             <div className="space-y-2">
                                 <div className="flex justify-between">
                                     <label htmlFor="password" className="text-sm">Password</label>
                                     {/* <Link to='/' className="text-xs hover:underline text-gray-400">Forgot password?</Link> */}
                                 </div>
-                                <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
+                                <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-300  focus:border-violet-400" />
                             </div>
+                            
                         </div>
-                        <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-sky-500 hover:bg-sky-700 text-gray-900">Login</button>
+                        <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md text-white bg-green-700 hover:bg-green-800">Login</button>
                     </form>
                 </div>
+                <p className='text-center'>error</p>
             </div>
+            
         </div>
     );
 };
