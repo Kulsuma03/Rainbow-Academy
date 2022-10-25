@@ -4,14 +4,22 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import { TbRainbow } from "react-icons/tb";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { user } = useContext(AuthContext);
-  // console.log(user);
+  const { user, logOut } = useContext(AuthContext);
+  
+  // handle log out 
+  
+  const handleLogOut = () => {
+    logOut()
+    .then(toast.error('User logged out!'))
+    .catch(error => console.log(error))
+  }
 
   return (
     <div className="bg-sky-900 sticky top-0 z-40">
@@ -77,9 +85,9 @@ export const Header = () => {
           {/* Show User Name Profile */}
 
             {
-              user ? 
+              user?.uid ? 
               <>
-                <li><p className='text-gray-100'>Log out</p></li>
+                <li><button onClick={handleLogOut} className='text-gray-100'>Log out</button></li>
                 <p> {user.displayName} </p>
               </>
                 :

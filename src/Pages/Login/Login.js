@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
+    const { signInWithGoogle, } = useContext(AuthContext);
+
+    const handleSubmit = () => {
+
+
+
+
+    }
+
+    // handle google sign In 
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
+
+
     return (
         <div className='w-full  mx-auto'>
             <div className=" w-80 mt-14 md:w-full mx-auto max-w-md p-21 mt-5 rounded-md shadow sm:p-8 bg-gray-100 ">
@@ -14,8 +37,7 @@ const Login = () => {
                     {/* Sign In With social media start here */}
 
                     <div className="my-6 mr-2 space-y-4">
-                        <button className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400">
-
+                        <button onClick={handleGoogleSignIn } className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400">
                             <p>Login with Google</p>
                         </button>
                         <button className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400">
@@ -27,12 +49,12 @@ const Login = () => {
                             <p>Login with Facebook</p>
                         </button>
                     </div>
-                    
+
                     {/* Sign in with social media end */}
 
                     {/* Sign In With Email And Password start */}
 
-                    <form className="space-y-8 ng-untouched ng-pristine ng-valid">
+                    <form onSubmit={handleSubmit} className="space-y-8 ng-untouched ng-pristine ng-valid">
                         <div className="space-y-4">
                             <div className="space-y-2">
                                 <label htmlFor="email" className="block text-sm">Email address</label>
