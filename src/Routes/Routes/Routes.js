@@ -1,7 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
+import CourseDetails from "../../Pages/CourseDatails/CourseDetails";
+import Courses from "../../Pages/Courses/Courses";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import Home from "../../Pages/Home/Home";
+import RightSideNav from "../../Pages/RightSideNav/RightSideNav";
 
 export const router = createBrowserRouter([
     {
@@ -12,7 +15,24 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/categories',
+                loader: () => fetch('https://assignment-10-server-jet.vercel.app/categories'),
+                element: <RightSideNav></RightSideNav>
+            },
+            {
+                path: '/courses',
+                loader: () => fetch('https://assignment-10-server-jet.vercel.app/courses'),
+                element: <Courses></Courses>
+            },
+            {
+                path: '/course/:id',
+                loader: ({params}) => fetch(`https://assignment-10-server-jet.vercel.app/course/${params.id}`),
+                element: <CourseDetails></CourseDetails>
             }
+           
+            
         ]
     }
 ])

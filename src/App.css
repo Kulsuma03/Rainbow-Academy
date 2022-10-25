@@ -1,10 +1,11 @@
-.App {
-  text-align: center;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Great+Vibes&family=Kanit:wght@300&family=Lobster&display=swap');
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+body{
+  font-family: 'Kanit', sans-serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -10,7 +10,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="bg-sky-900 sticky top-0">
+    <div className="bg-sky-900 sticky top-0 z-40">
       <div className="px-4  py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="relative flex items-center justify-between">
           <div className="flex items-center">
@@ -29,7 +29,7 @@ export const Header = () => {
              
               <li>
                 <NavLink
-                  to="/"
+                  to="/courses"
                   aria-label="Our Book"
                   title="Our Book"
                   className={({ isActive }) => isActive
@@ -141,7 +141,7 @@ export const Header = () => {
                     <ul className="space-y-4">
                       <li>
                         <NavLink
-                          to="/"
+                          to="/courses"
                           aria-label="Our Books"
                           title="Our Books"
                           className={({ isActive }) => isActive
