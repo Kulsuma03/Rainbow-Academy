@@ -35,12 +35,12 @@ const Login = () => {
                     <form className="space-y-8 ng-untouched ng-pristine ng-valid">
                         <div className="space-y-4">
                             <div className="space-y-2">
-                                <label for="email" className="block text-sm">Email address</label>
+                                <label htmlFor="email" className="block text-sm">Email address</label>
                                 <input type="email" name="email" id="email" placeholder="leroy@jenkins.com" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />
                             </div>
                             <div className="space-y-2">
                                 <div className="flex justify-between">
-                                    <label for="password" className="text-sm">Password</label>
+                                    <label htmlFor="password" className="text-sm">Password</label>
                                     {/* <Link to='/' className="text-xs hover:underline text-gray-400">Forgot password?</Link> */}
                                 </div>
                                 <input type="password" name="password" id="password" placeholder="*****" className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400" />

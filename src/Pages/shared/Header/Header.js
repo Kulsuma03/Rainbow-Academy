@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
 import { TbRainbow } from "react-icons/tb";
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const user = null
+  const { user } = useContext(AuthContext);
+  // console.log(user);
 
   return (
     <div className="bg-sky-900 sticky top-0 z-40">
@@ -24,11 +26,11 @@ export const Header = () => {
             >
               <TbRainbow className='logo text-xl'></TbRainbow>
               <span className="ml-2 company text-xl font-bold tracking-wide text-gray-100 uppercase">
-              Rainbow Academy
+                Rainbow Academy
               </span>
             </Link>
             <ul className="flex items-center hidden space-x-8 lg:flex">
-             
+
               <li>
                 <NavLink
                   to="/courses"
@@ -52,7 +54,7 @@ export const Header = () => {
                     : "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-sky-500"
                   }
                 >
-                  FAQ 
+                  FAQ
                 </NavLink>
               </li>
               <li>
@@ -71,19 +73,32 @@ export const Header = () => {
             </ul>
           </div>
           <ul className="flex items-center hidden space-x-8 lg:flex">
-          <li>
-                <NavLink
-                  to="/login"
-                  aria-label="Book pricing"
-                  title="Book pricing"
-                  className={({ isActive }) => isActive
-                    ? "font-medium tracking-wide text-sky-500 transition-colors duration-200 hover:text-sky-500"
-                    : "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-sky-500"
-                  }
-                >
-                  Login
-                </NavLink>
-              </li>
+          
+          {/* Show User Name Profile */}
+
+            {
+              user ? 
+              <>
+                <li><p className='text-gray-100'>Log out</p></li>
+                <p> {user.displayName} </p>
+              </>
+                :
+                <li>
+                  <NavLink
+                    to="/login"
+                    aria-label="Book pricing"
+                    title="Book pricing"
+                    className={({ isActive }) => isActive
+                      ? "font-medium tracking-wide text-sky-500 transition-colors duration-200 hover:text-sky-500"
+                      : "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-sky-500"
+                    }
+                  >
+                    Login
+                  </NavLink>
+                </li>
+            }
+
+
             <li>
               <Link
                 to="/"
@@ -128,10 +143,10 @@ export const Header = () => {
                         title="Company"
                         className="inline-flex items-center"
                       >
-                        
+
                         <TbRainbow className='logo text-xl'></TbRainbow>
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                        Rainbow Academy
+                          Rainbow Academy
                         </span>
                       </Link>
                     </div>
@@ -192,7 +207,7 @@ export const Header = () => {
                           Blog
                         </NavLink>
                       </li>
-                      
+
                       <li>
                         <Link
                           to="/"
