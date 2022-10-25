@@ -9,6 +9,8 @@ import { TbRainbow } from "react-icons/tb";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const user = null
+
   return (
     <div className="bg-sky-900 sticky top-0 z-40">
       <div className="px-4  py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -69,7 +71,19 @@ export const Header = () => {
             </ul>
           </div>
           <ul className="flex items-center hidden space-x-8 lg:flex">
-            
+          <li>
+                <NavLink
+                  to="/login"
+                  aria-label="Book pricing"
+                  title="Book pricing"
+                  className={({ isActive }) => isActive
+                    ? "font-medium tracking-wide text-sky-500 transition-colors duration-200 hover:text-sky-500"
+                    : "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-sky-500"
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
             <li>
               <Link
                 to="/"

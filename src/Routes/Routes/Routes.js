@@ -4,6 +4,7 @@ import CourseDetails from "../../Pages/CourseDatails/CourseDetails";
 import Courses from "../../Pages/Courses/Courses";
 import ErrorElement from "../../Pages/ErrorElement/ErrorElement";
 import Home from "../../Pages/Home/Home";
+import Login from "../../Pages/Login/Login";
 import RightSideNav from "../../Pages/RightSideNav/RightSideNav";
 
 export const router = createBrowserRouter([
@@ -14,6 +15,14 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
+                element: <Home></Home>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/signup',
                 element: <Home></Home>
             },
             {
