@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Signup = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -14,16 +15,33 @@ const Signup = () => {
         const photoURL = form.photoURL.value;
         const password = form.password.value;
         console.log(name, email, photoURL, password);
-
+        
+        // create user email and password 
+        
         createUser(email, password)
         .then(result => {
             const user = result.user;
+            toast.success('Successfully Sign up')
             console.log(user);
+            form.reset();
+            handleUpdateUserProfile(name, photoURL)
         })
         .catch(error => {
-            console.error(error)
+            toast.error(error.message)
         })
         
+    }
+
+    // update profile 
+    
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName : name,
+            photoURL : photoURL
+        }
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(error => toast.error(error.message))
     }
     return (
         <div className='w-full'>
@@ -52,7 +70,7 @@ const Signup = () => {
                             <p>Already have an account?  <Link to="/login" >Please Log in</Link></p>
                         </div>
                     </div>
-                    <button className="block w-full p-3 text-center rounded-sm text-white bg-green-700 hover:bg-green-800">Sign in</button>
+                    <button className="block w-full p-3 text-center rounded-sm text-white bg-green-700 hover:bg-green-800">Sign Up</button>
                 </form>
             </div>
         </div>

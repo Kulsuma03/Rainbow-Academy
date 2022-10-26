@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const RightSideNav = () => {
     const categories = useLoaderData([]);
-    console.log(categories);
+    // console.log(categories);
 
     return (
         <div className='w-full '>

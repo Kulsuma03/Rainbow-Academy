@@ -5,7 +5,7 @@ import RightSideNav from '../RightSideNav/RightSideNav';
 
 const Courses = () => {
     const courses = useLoaderData([]);
-    console.log(courses);
+    // console.log(courses);
     return (
         <div className="lg:grid grid-cols-4 block gap-4">
             

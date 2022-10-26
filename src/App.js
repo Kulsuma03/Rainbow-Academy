@@ -4,8 +4,9 @@ import './App.css';
 import { router } from './Routes/Routes/Routes';
 
 function App() {
+  
   return (
-    <div className="App">
+    <div className=''>
       <RouterProvider router={router}></RouterProvider>
       <Toaster/>
     </div>
@@ -13,3 +14,5 @@ function App() {
 }
 
 export default App;
+
+

@@ -2,23 +2,34 @@ import React, { useContext } from 'react';
 import { useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css'
-import { TbRainbow } from "react-icons/tb";
+import { TbRainbow, TbUserCircle } from "react-icons/tb";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import { CiDark, CiLight } from "react-icons/ci";
 
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [theme, setTheme] = useState(false)
+  console.log(theme);
+
+  const handleClick = event => {
+    // 👇️ toggle isActive state variable
+    setTheme(current => !current);
+  };
+
   const { user, logOut } = useContext(AuthContext);
-  console.log(user.displayName);
+
   // handle log out 
 
   const handleLogOut = () => {
     logOut()
-    .then(toast.error('User logged out!'))
-    .catch(error => console.log(error))
+      .then(toast.error('User logged out!'))
+      .catch(error => console.log(error))
   }
 
   return (
@@ -78,45 +89,80 @@ export const Header = () => {
                   Blog
                 </NavLink>
               </li>
+
+
+              {/* theme change function  */}
+              <li className='text-sky-50 mt-2'>
+                <button onClick={handleClick}>
+                  {theme ?
+                    <div className='flex'>
+                      <CiDark className='text-white text-2xl'></CiDark>
+                      <span>Light</span>
+                    </div>
+                    :
+                    <div className='flex'>
+                      <CiLight className=' text-2xl'></CiLight>
+                      <span>Dark</span>
+                    </div>
+                  }
+                </button>
+              </li>
+
+
             </ul>
           </div>
           <ul className="flex items-center hidden space-x-8 lg:flex">
-          
-          {/* Show User Name Profile */}
+
+            {/* Show User Name Profile */}
 
             {
-              user?.uid ? 
-              <>
-                <li><button onClick={handleLogOut} className='text-gray-100'>Log out</button></li>
-                <p className='text-gray-100'> {user.displayName} </p>
-              </>
+              user ?
+                <>
+                  <li><button onClick={handleLogOut} className='text-gray-100'>Log out</button></li>
+
+                </>
                 :
-                <li>
-                  <NavLink
-                    to="/login"
-                    aria-label="Book pricing"
-                    title="Book pricing"
-                    className={({ isActive }) => isActive
-                      ? "font-medium tracking-wide text-sky-500 transition-colors duration-200 hover:text-sky-500"
-                      : "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-sky-500"
-                    }
-                  >
-                    Login
-                  </NavLink>
-                </li>
+                <>
+                  <li>
+                    <NavLink
+                      to="/login"
+                      aria-label="Book pricing"
+                      title="Book pricing"
+                      className={({ isActive }) => isActive
+                        ? "font-medium tracking-wide text-sky-500 transition-colors duration-200 hover:text-sky-500"
+                        : "font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-sky-500"
+                      }
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <Link
+                      to="/signup"
+                      className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-500 hover:bg-sky-700 focus:shadow-outline focus:outline-none"
+                      aria-label="Sign up"
+                      title="Sign up"
+                    >
+                      Sign up
+                    </Link>
+                  </li>
+                </>
             }
-
-
             <li>
-              <Link
-                to="/signup"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-500 hover:bg-sky-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Sign up
-              </Link>
+              {
+
+                user?.photoURL
+                  ?
+                  <Tippy content={user?.displayName}>
+                    <img src={user.photoURL} alt="" className="w-11 h-11 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
+                  </Tippy>
+                  :
+                  <TbUserCircle className='w-8 h-8 text-gray-200'></TbUserCircle>
+
+              }
             </li>
+
+
           </ul>
           <div className="lg:hidden">
             <button
@@ -216,16 +262,77 @@ export const Header = () => {
                         </NavLink>
                       </li>
 
-                      <li>
-                        <Link
-                          to="/signup"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-500 hover:bg-sky-600 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
-                        >
-                          Sign up
-                        </Link>
+                      {/* theme change function  */}
+                      <li className=' mt-2'>
+                        <button onClick={handleClick}>
+                          {theme ?
+                            <div className='flex'>
+                              <CiDark className=' text-2xl'></CiDark>
+                              <span>Light</span>
+                            </div>
+                            :
+                            <div className='flex'>
+                              <CiLight className=' text-2xl'></CiLight>
+                              <span>Dark</span>
+                            </div>
+                          }
+                        </button>
                       </li>
+
+
+                      {/* Show User Name Profile */}
+                      <li>
+                        {
+
+                          user?.photoURL
+                            ?
+                            <Tippy content={user?.displayName}>
+                              <img src={user.photoURL} alt="" className="w-11 h-11 rounded-full dark:bg-gray-500 aspect-square" />
+                            </Tippy>
+                            :
+                            <TbUserCircle className='w-8 h-8'></TbUserCircle>
+
+                        }
+                      </li>
+
+                      {
+                        user ?
+                          <>
+                            <li><button onClick={handleLogOut} className=''>Log out</button></li>
+
+                          </>
+                          :
+                          <>
+                            <li>
+                              <NavLink
+                                to="/login"
+                                aria-label="Book pricing"
+                                title="Book pricing"
+                                className={({ isActive }) => isActive
+                                  ? "font-medium tracking-wide text-sky-500 transition-colors duration-200 hover:text-sky-500"
+                                  : "font-medium tracking-wide transition-colors duration-200 hover:text-sky-500"
+                                }
+                              >
+                                Login
+                              </NavLink>
+                            </li>
+                            <li>
+                              <li>
+                                <Link
+                                  to="/signup"
+                                  className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-500 hover:bg-sky-600 focus:shadow-outline focus:outline-none"
+                                  aria-label="Sign up"
+                                  title="Sign up"
+                                >
+                                  Sign up
+                                </Link>
+                              </li>
+                            </li>
+                          </>
+                      }
+
+
+
                     </ul>
                   </nav>
                 </div>
