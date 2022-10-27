@@ -6,7 +6,7 @@ const RightSideNav = () => {
     // console.log(categories);
 
     return (
-        <div className='w-full '>
+        <div className='md:w-full mx-auto'>
 
             {/* categories section start  */}
             <div className='bg-gray-100 shadow-lg px-2 py-11 mb-0'>
