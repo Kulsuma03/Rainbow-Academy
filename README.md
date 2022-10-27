@@ -2,9 +2,9 @@
 
 ## _The Top learning platform
 
-In the project directory, you can run:
 
-## _Live Link
+
+### _Live Link
 
 
 Hosted in Firebase -> [Rainbow Academy Live link](https://rainbow-academy-50e27.web.app/)
