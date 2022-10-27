@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CheckOutInfo = ({img}) => {
     return (
-        <div className='ml-16 lg:ml-0'>
+        <div className=''>
             <div className="  mb-0 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
                 <div className="relative sm:w-full transition-shadow duration-300 hover:shadow-xl">
                     <img
